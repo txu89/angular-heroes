@@ -8,35 +8,33 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-var mock_heroes_1 = require('./mock-heroes');
 var core_1 = require('@angular/core');
-var HeroService = (function () {
-    function HeroService() {
+var router_1 = require('@angular/router');
+var dashboard_component_1 = require('./dashboard.component');
+var heroes_component_1 = require('./heroes.component');
+var hero_detail_component_1 = require('./hero-detail.component');
+var routes = [
+    { path: '', redirectTo: '/dashboard', pathMatch: 'full' },
+    { path: 'dashboard', component: dashboard_component_1.DashboardComponent },
+    { path: 'detail/:id', component: hero_detail_component_1.HeroDetailComponent },
+    { path: 'heroes', component: heroes_component_1.HeroesComponent }
+];
+var AppRoutingModule = (function () {
+    function AppRoutingModule() {
     }
-    HeroService.prototype.getHeroes = function () {
-        return Promise.resolve(mock_heroes_1.HEROES);
-    };
-    HeroService.prototype.getHeroesSlowly = function () {
-        var _this = this;
-        return new Promise(function (resolve) {
-            // Simulate server latency with 2 second delay
-            setTimeout(function () { return resolve(_this.getHeroes()); }, 2000);
-        });
-    };
-    HeroService.prototype.getHero = function (id) {
-        return this.getHeroes()
-            .then(function (heroes) { return heroes.find(function (hero) { return hero.id === id; }); });
-    };
-    HeroService = __decorate([
-        core_1.Injectable(), 
+    AppRoutingModule = __decorate([
+        core_1.NgModule({
+            imports: [router_1.RouterModule.forRoot(routes)],
+            exports: [router_1.RouterModule]
+        }), 
         __metadata('design:paramtypes', [])
-    ], HeroService);
-    return HeroService;
+    ], AppRoutingModule);
+    return AppRoutingModule;
 }());
-exports.HeroService = HeroService;
+exports.AppRoutingModule = AppRoutingModule;
 /*
 Copyright 2017 Google Inc. All Rights Reserved.
 Use of this source code is governed by an MIT-style license that
 can be found in the LICENSE file at http://angular.io/license
 */ 
-//# sourceMappingURL=hero.service.js.map
+//# sourceMappingURL=app-routing.module.js.map
