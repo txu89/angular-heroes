@@ -28,6 +28,11 @@ var HeroDetailComponent = (function () {
     HeroDetailComponent.prototype.goBack = function () {
         this.location.back();
     };
+    HeroDetailComponent.prototype.save = function () {
+        var _this = this;
+        this.heroService.update(this.hero)
+            .then(function () { return _this.goBack(); });
+    };
     HeroDetailComponent = __decorate([
         core_1.Component({
             moduleId: module.id,
@@ -40,9 +45,4 @@ var HeroDetailComponent = (function () {
     return HeroDetailComponent;
 }());
 exports.HeroDetailComponent = HeroDetailComponent;
-/*
-Copyright 2017 Google Inc. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at http://angular.io/license
-*/ 
 //# sourceMappingURL=hero-detail.component.js.map
