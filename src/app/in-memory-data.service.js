@@ -2,7 +2,7 @@
 var InMemoryDataService = (function () {
     function InMemoryDataService() {
     }
-    InMemoryDataService.prototype.createDB = function () {
+    InMemoryDataService.prototype.createDb = function () {
         var heroes = [
             { id: 11, name: 'Mr. Nice' },
             { id: 12, name: 'Narco' },
@@ -20,4 +20,4 @@ var InMemoryDataService = (function () {
     return InMemoryDataService;
 }());
 exports.InMemoryDataService = InMemoryDataService;
-//# sourceMappingURL=mock-heroes.js.map
+//# sourceMappingURL=in-memory-data.service.js.map
